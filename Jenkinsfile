@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'hello world'
-                // sh 'chmod +x gradlew'
+                sh 'chmod +x gradlew'
                 echo 'hello world'
                 sh './gradlew assemble'
             }
