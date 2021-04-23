@@ -25,7 +25,7 @@ pipeline {
         stage('Push Docker image') {
             environment {
                 DOCKER_HUB_LOGIN_USER = credentials('ashan97')
-                $DOCKER_HUB_LOGIN_PSW = credentials('971521813')
+                DOCKER_HUB_LOGIN_PSW = credentials('971521813')
             }
             steps {
                 sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
