@@ -19,7 +19,9 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
+                echo 'setting docker.sock permission'
                 sh 'chmod 664 /var/run/docker.sock'
+                echo 'set dockers to sock permission'
                 sh './gradlew docker'
             }
         }
