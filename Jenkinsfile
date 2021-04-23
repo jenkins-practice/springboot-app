@@ -19,6 +19,7 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
+                sh 'chmod 664 /var/run/docker.sock'
                 sh './gradlew docker'
             }
         }
