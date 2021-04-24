@@ -19,10 +19,8 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
-                // sh 'USER root'
-                sh 'apt-get update && apt-get -y install sudo'
-                sh 'sudo chmod 777 /var/run/docker.sock'
-                sh 'usermod -aG docker jenkins'
+
+                // sh 'sudo chmod 777 /var/run/docker.sock'
                 // sh 'USER jenkins'
                 echo '********************* current location files ******************'
                 sh 'ls'
