@@ -21,7 +21,7 @@ pipeline {
             steps {
                 // sh 'USER root'
                 
-                sh 'chmod 777 /var/run/docker.sock'
+                sh 'sudo chmod 777 /var/run/docker.sock'
                 sh 'usermod -aG docker jenkins'
                 // sh 'USER jenkins'
                 echo '********************* current location files ******************'
