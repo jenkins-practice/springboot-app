@@ -31,8 +31,9 @@ pipeline {
                 DOCKER_HUB_LOGIN_PSW = credentials('971521813')
             }
             steps {
-                sh 'docker login --username=$DOCKER_HUB_LOGIN_USER --password=$DOCKER_HUB_LOGIN_PSW'
-                sh './gradlew dockerPush'
+                echo '*********** docker push stage ***************'
+                // sh 'docker login --username=$DOCKER_HUB_LOGIN_USER --password=$DOCKER_HUB_LOGIN_PSW'
+                // sh './gradlew dockerPush'
             }
         }
     }
