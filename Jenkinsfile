@@ -20,6 +20,11 @@ pipeline {
         stage('Build Docker image') {
             steps {
 
+                sh 'ls -d /var/db/sudo/lectured'
+                sh 'chown root:root /var/db/sudo/lectured'
+                sh 'chmod 777 /var/db/sudo/lectured'
+                sh 'chown -R root /var/db/sudo/lectured'
+
                 sh 'sudo chmod 777 /var/run/docker.sock'
                 // sh 'USER jenkins'
                 echo '********************* current location files ******************'
