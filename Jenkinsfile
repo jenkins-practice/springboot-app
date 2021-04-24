@@ -23,7 +23,10 @@ pipeline {
                 sh 'ls'
 //                 echo 'setting docker.sock permission'
 //                 sh 'chmod 664 /var/run/docker.sock'
+                echo '******************** docker images *****************'
+                sh 'docker images'
                 echo '********************* start docker operations ******************'
+                
                 sh './gradlew docker --debug'
             }
         }
