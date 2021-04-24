@@ -19,6 +19,8 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
+                echo '********************* current location files ******************'
+                sh 'ls'
 //                 echo 'setting docker.sock permission'
 //                 sh 'chmod 664 /var/run/docker.sock'
                 echo '********************* start docker operations ******************'
