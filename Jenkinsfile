@@ -25,7 +25,7 @@ pipeline {
                 sh 'ls'
                 echo '*********** insilde build**********'
                 sh 'cd libs'
-                echo '*********** insilde build**********'
+                echo '*********** insilde libs**********'
                 sh 'ls'
                 sh 'cd ..'
                 sh 'cd ..'
