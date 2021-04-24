@@ -22,7 +22,7 @@ pipeline {
 //                 echo 'setting docker.sock permission'
 //                 sh 'chmod 664 /var/run/docker.sock'
                 echo '********************* start docker operations ******************'
-                sh './gradlew docker'
+                sh './gradlew docker --info'
             }
         }
         stage('Push Docker image') {
