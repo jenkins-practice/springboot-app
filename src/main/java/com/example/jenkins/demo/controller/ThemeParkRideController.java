@@ -12,6 +12,7 @@ public class ThemeParkRideController {
 
     @GetMapping(value = "/ride/{id}")
     public ResponseEntity<String> getRide(@PathVariable long id){
+        System.out.println("hello world");
         return ResponseEntity.ok().body("hello rider");
     }
 
