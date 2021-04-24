@@ -21,6 +21,11 @@ pipeline {
             steps {
                 echo '********************* current location files ******************'
                 sh 'ls'
+                sh 'cd build'
+                sh 'cd libs'
+                sh 'ls'
+                sh 'cd ..'
+                sh 'cd ..'
 //                 echo 'setting docker.sock permission'
 //                 sh 'chmod 664 /var/run/docker.sock'
                 echo '********************* start docker operations ******************'
