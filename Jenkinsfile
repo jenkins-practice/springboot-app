@@ -20,7 +20,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
 
-                // sh 'sudo chmod 777 /var/run/docker.sock'
+                sh 'sudo chmod 777 /var/run/docker.sock'
                 // sh 'USER jenkins'
                 echo '********************* current location files ******************'
                 sh 'ls'
