@@ -21,18 +21,10 @@ pipeline {
             steps {
                 echo '********************* current location files ******************'
                 sh 'ls'
-                sh 'cd /build'
-                sh 'ls'
-                echo '*********** insilde build**********'
-                sh 'cd /libs'
-                echo '*********** insilde libs**********'
-                sh 'ls'
-                sh 'cd ..'
-                sh 'cd ..'
 //                 echo 'setting docker.sock permission'
 //                 sh 'chmod 664 /var/run/docker.sock'
                 echo '********************* start docker operations ******************'
-                sh './gradlew docker --info'
+                sh './gradlew docker --debug'
             }
         }
         stage('Push Docker image') {
