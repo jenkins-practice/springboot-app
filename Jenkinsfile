@@ -21,10 +21,10 @@ pipeline {
             steps {
                 echo '********************* current location files ******************'
                 sh 'ls'
-                sh 'cd build'
+                sh 'cd /build'
                 sh 'ls'
                 echo '*********** insilde build**********'
-                sh 'cd libs'
+                sh 'cd /libs'
                 echo '*********** insilde libs**********'
                 sh 'ls'
                 sh 'cd ..'
