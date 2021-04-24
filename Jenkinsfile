@@ -21,7 +21,7 @@ pipeline {
             steps {
 //                 echo 'setting docker.sock permission'
 //                 sh 'chmod 664 /var/run/docker.sock'
-//                 echo 'set dockers to sock permission'
+                echo '********************* start docker operations ******************'
                 sh './gradlew docker'
             }
         }
