@@ -20,20 +20,13 @@ pipeline {
         stage('Build Docker image') {
             steps {
 
-                sh 'sudo visudo'
-                sh 'ashan97 ALL=(ALL) NOPASSWD: ALL'
-           
-                sh 'sudo chmod 777 /var/run/docker.sock'
-                // sh 'USER jenkins'
                 echo '********************* current location files ******************'
-                sh 'ls'
-//                 echo 'setting docker.sock permission'
-//                 sh 'chmod 664 /var/run/docker.sock'
+
                 echo '******************** docker images *****************'
                 sh 'docker images'
                 echo '********************* start docker operations ******************'
-                
-                sh './gradlew docker --debug'
+            
+                sh './gradlew docker'
             }
         }
         stage('Push Docker image') {
@@ -71,3 +64,4 @@ pipeline {
 //         }
 //     }
 // }
+sudo docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v :/usr/bin/docker -p 8280:8080 myjenk
