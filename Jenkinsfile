@@ -65,7 +65,7 @@ pipeline {
             steps {
 
                 echo '********************* start docker build operations ******************'
-                sh './gradlew docker -DfirstParam=100'
+                sh "./gradlew docker -DversionParam=${currentVersion}"
                 
                 echo '********************* docker images *****************************'
                 sh 'docker images'
