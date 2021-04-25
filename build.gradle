@@ -24,7 +24,6 @@ dependencies {
 	}
 }
 
-project.ext.set("******************** newVersionName ********************", newVersion)
 
 def firstParam = System.getProperty("firstParam")
 
@@ -33,7 +32,9 @@ test {
 	useJUnitPlatform()
 }
 
-
+definee{
+	println '********************** defineeeeeeeee **********************'
+}
 
 // String dockerHubUsernameProperty = findProperty('ashan97') ?: 'tkgregory'
 String imageName = "ashan97/spring-boot-api-example:$version"
@@ -44,9 +45,6 @@ docker {
 
 	println "Message-----------------------------> : ${firstParam}"
 	
-
-	println "NEW version ---------------------------> ${project.newVersionName}"
-
 	name imageName
 	files "build/libs/${bootJar.archiveFileName.get()}"
 	buildArgs([JAR_FILE: bootJar.archiveFileName.get()])
