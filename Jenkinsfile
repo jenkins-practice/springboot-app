@@ -16,8 +16,8 @@ pipeline {
                 echo 'hello world 11'
                 sh 'chmod +x gradlew'
                 echo 'hello world 22'
-                sh 'gradle publish -PfirstParam=100'
-                sh './gradlew assemble'
+                // sh './gradlew publish -PfirstParam=100'
+                sh './gradlew -PfirstParam=100 assemble'
             }
         }
         stage('Test') {
