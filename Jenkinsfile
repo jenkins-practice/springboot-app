@@ -26,7 +26,7 @@ pipeline {
                 sh 'docker images'
                 echo '********************* start docker operations ******************'
             
-                sh './gradlew docker'
+                sh './gradlew dockerBuild'
             }
         }
         stage('Push Docker image') {
