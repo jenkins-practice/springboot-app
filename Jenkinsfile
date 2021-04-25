@@ -1,5 +1,12 @@
 pipeline {
     agent any
+
+    parameters {
+        string(name: 'firstParam', defaultValue: '0.0.1-SNAPSHOT', description: '')
+        string(name: 'secondParam', defaultValue: 'BBB', description: '')
+        string(name: 'thirdParam', defaultValue: 'CCC', description: '')
+        }
+
     triggers {
         pollSCM '* * * * *'
     }
@@ -9,7 +16,7 @@ pipeline {
                 echo 'hello world 11'
                 sh 'chmod +x gradlew'
                 echo 'hello world 22'
-                sh './gradlew assemble'
+                sh './gradlew -PfirstParam=${params.firstParam} -PsecondParam=${params.secondParam} -PthirdParam=${params.thirdParam} assemble'
             }
         }
         stage('Test') {
@@ -19,13 +26,12 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
-
                 echo '********************* current location files ******************'
 
                 echo '******************** docker images *****************'
                 sh 'docker images'
                 echo '********************* start docker operations ******************'
-            
+
                 sh './gradlew dockerBuild'
             }
         }
