@@ -33,13 +33,14 @@ test {
 }
 
 // String dockerHubUsernameProperty = findProperty('ashan97') ?: 'tkgregory'
-String imageName = "ashan97/spring-boot-api-example:$version"
+
 
 docker {
 
 	// def firstParam = project.getProperty("firstParam")
 
 	println "Received build version gradle : ${versionParam}"
+	String imageName = "ashan97/spring-boot-api-example:$versionParam"
 	
 	name imageName
 	files "build/libs/${bootJar.archiveFileName.get()}"
