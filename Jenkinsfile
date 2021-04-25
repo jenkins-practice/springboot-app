@@ -1,3 +1,5 @@
+def foo = "foo 1"
+
 pipeline {
     agent any
 
@@ -13,9 +15,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo 'FOO ------------------------------------> $foo'
                 echo 'hello world 11'
                 sh 'chmod +x gradlew'
                 echo 'hello world 22'
+
+                foo = "foo 2"
+                echo 'FOO ------------------------------------> $foo'
                 // sh './gradlew publish -PfirstParam=100'
                 sh './gradlew assemble'
             }
