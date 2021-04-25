@@ -30,13 +30,13 @@ pipeline {
             }
         }
         stage('Push Docker image') {
-            environment {
-                DOCKER_HUB_LOGIN_USER = credentials('ashan97')
-                DOCKER_HUB_LOGIN_PSW = credentials('971521813')
-            }
+            // environment {
+            //     DOCKER_HUB_LOGIN_USER = credentials('ashan97')
+            //     DOCKER_HUB_LOGIN_PSW = credentials('971521813')
+            // }
             steps {
                 echo '*********** docker push stage ***************'
-                sh 'docker login --username=$DOCKER_HUB_LOGIN_USER --password=$DOCKER_HUB_LOGIN_PSW'
+                sh 'docker login --username=ashan97 --password=971521813'
                 sh './gradlew dockerPush'
             }
         }
