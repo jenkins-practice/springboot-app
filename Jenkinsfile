@@ -20,9 +20,9 @@ pipeline {
                 sh 'chmod +x gradlew'
                 echo 'hello world 22'
 
-                script {
-                    foo = "FOO 2"
-                }
+                // script {
+                //     foo = "FOO 2"
+                // }
 
                 sh '$foo = "foo 2"'
                 echo 'FOO ------------------------------------> $foo'
