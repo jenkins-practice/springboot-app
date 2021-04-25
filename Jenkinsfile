@@ -30,37 +30,14 @@ pipeline {
             }
         }
         stage('Push Docker image') {
-            // environment {
-            //     DOCKER_HUB_LOGIN_USER = credentials('ashan97')
-            //     DOCKER_HUB_LOGIN_PSW = credentials('971521813')
-            // }
+            environment {
+                DOCKER_HUB_LOGIN = credentials('docker-hub')
+            }
             steps {
-                echo '*********** docker push stage ***************'
-                sh 'docker login --username=ashan97 --password=971521813'
+                sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
                 sh './gradlew dockerPush'
             }
         }
     }
 }
-// pipeline {
-//     agent any
-//
-//     triggers {
-//         pollSCM '* * * * *'
-//     }
-//     stages {
-//         stage('Build') {
-//             steps {
-//                 echo 'hello world'
-//                 sh 'chmod +x gradlew'
-//                 echo 'hello world'
-//                 sh './gradlew assemble'
-//             }
-//         }
-//         stage('Test') {
-//             steps {
-//                 sh './gradlew test'
-//             }
-//         }
-//     }
-// }
+
