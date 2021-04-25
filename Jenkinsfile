@@ -16,7 +16,8 @@ pipeline {
                 echo 'hello world 11'
                 sh 'chmod +x gradlew'
                 echo 'hello world 22'
-                sh './gradlew -PfirstParam=${params.firstParam} -PsecondParam=${params.secondParam} -PthirdParam=${params.thirdParam} assemble'
+                sh './gradlew publish -PfirstParam=100'
+                sh './gradlew assemble'
             }
         }
         stage('Test') {
@@ -32,7 +33,7 @@ pipeline {
                 sh 'docker images'
                 echo '********************* start docker operations ******************'
 
-                sh './gradlew dockerBuild'
+                sh './gradlew docker'
             }
         }
         stage('Push Docker image') {
