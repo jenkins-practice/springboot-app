@@ -15,6 +15,21 @@ pipeline {
     }
     stages {
 
+        stage('resource git clone'){
+
+            environment {
+                        GIT_HUB_LOGIN = credentials('github-id')
+            }
+
+            steps{
+
+           
+                sh "git clone https://$GIT_HUB_LOGIN_USR:$GIT_HUB_LOGIN_PWD@github.com/jenkins-practice/resources.git"
+                
+        
+            }
+        }
+
         stage('Build') {
             steps {
                 echo "FOO ------------------------------------> ${foo}"
