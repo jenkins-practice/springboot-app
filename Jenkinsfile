@@ -67,7 +67,7 @@ pipeline {
                 echo '********************* start docker build operations ******************'
                 // sh "./gradlew docker -DversionParam=${currentVersion}"
                 
-                sh "docker build -t ashan97/spring-boot-api-example:latest -t ashan97/spring-boot-api-example:v${currentVersion} ."
+                sh "docker build --build-arg JAR_FILE=build/libs/\*.jar -t ashan97/spring-boot-api-example:latest -t ashan97/spring-boot-api-example:v${currentVersion} ."
 
                 echo '********************* docker images *****************************'
                 sh 'docker images'
