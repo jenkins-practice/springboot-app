@@ -23,7 +23,7 @@ pipeline {
 
             steps{
 
-                sh 'rm -r *'
+                sh 'rm -rf resources'
                 sh "git clone https://$GIT_HUB_LOGIN_USR:$GIT_HUB_LOGIN_PSW@github.com/jenkins-practice/resources.git"
          
         
