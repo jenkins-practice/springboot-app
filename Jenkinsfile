@@ -1,4 +1,4 @@
-def foo = "foo 1"
+def currentVersion = "0"
 
 pipeline {
 
@@ -34,7 +34,9 @@ pipeline {
 
                 script {
                     def envs = readJSON file: "./env.json"
+                    currentVersion = envs.app_version
                 }
+                echo "************** CURRENT VERSION ******************* ${currentVersion}"
             }
         }
 
