@@ -42,17 +42,10 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "FOO ------------------------------------> ${foo}"
+                echo "FOO ------------------------------------> ${currentVersion}"
                 echo 'hello world 11'
                 sh 'chmod +x gradlew'
                 echo 'hello world 22'
-
-                script {
-                    foo = "FOO 2"
-                }
-
-                // sh '$foo = "foo 2"'
-                echo "FOO ------------------------------------> ${foo}"
                 // sh './gradlew publish -PfirstParam=100'
                 sh './gradlew assemble'
             }
