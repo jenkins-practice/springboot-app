@@ -24,12 +24,14 @@ dependencies {
 	}
 }
 
+def firstParam = System.getProperty("firstParam")
+
 test {
 
 	useJUnitPlatform()
 }
 
-// def firstParam = System.getProperty("firstParam")
+
 
 // String dockerHubUsernameProperty = findProperty('ashan97') ?: 'tkgregory'
 String imageName = "ashan97/spring-boot-api-example:$version"
