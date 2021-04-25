@@ -40,7 +40,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 echo '********************* current location files ******************'
-
+                sh 'ls'
                 echo '******************** docker images *****************'
                 sh 'docker images'
                 echo '********************* start docker operations ******************'
