@@ -24,6 +24,7 @@ pipeline {
             steps{
 
                 sh 'rm -rf resources'
+                sh 'rm -rf .git'
                 sh 'git init'
                 sh "git remote add origin https://$GIT_HUB_LOGIN_USR:$GIT_HUB_LOGIN_PSW@github.com/jenkins-practice/resources.git"
                 sh 'git fetch'
