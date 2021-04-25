@@ -25,15 +25,11 @@ dependencies {
 }
 
 
-def firstParam = System.getProperty("firstParam")
+// def firstParam = System.getProperty("firstParam")
 
 test {
 
 	useJUnitPlatform()
-}
-
-definee {
-	println "********************** defineeeeeeeee ********************** ${newVersion}"
 }
 
 // String dockerHubUsernameProperty = findProperty('ashan97') ?: 'tkgregory'

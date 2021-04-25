@@ -16,7 +16,6 @@ pipeline {
                 echo 'hello world 11'
                 sh 'chmod +x gradlew'
                 echo 'hello world 22'
-                sh './gradlew definee -DnewVersion=V:001'
                 // sh './gradlew publish -PfirstParam=100'
                 sh './gradlew assemble'
             }
