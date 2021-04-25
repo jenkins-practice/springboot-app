@@ -36,7 +36,7 @@ String imageName = "ashan97/spring-boot-api-example:$version"
 
 docker {
 
-	println "Message: ${firstParam}"
+	println "Message-----------------------------> : ${firstParam}"
 
 	name imageName
 	files "build/libs/${bootJar.archiveFileName.get()}"
