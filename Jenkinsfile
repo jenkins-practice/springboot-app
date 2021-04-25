@@ -64,4 +64,3 @@ pipeline {
 //         }
 //     }
 // }
-sudo docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v :/usr/bin/docker -p 8280:8080 myjenk
