@@ -25,7 +25,7 @@ dependencies {
 }
 
 
-// def firstParam = System.getProperty("firstParam")
+def firstParam = System.getProperty("firstParam")
 
 test {
 
