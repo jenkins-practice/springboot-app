@@ -1,4 +1,5 @@
-def currentVersion = "0"
+def currentVersion = 0
+def verssionIncrement = 0
 
 pipeline {
 
@@ -18,7 +19,7 @@ pipeline {
         stage('resource git clone'){
 
             environment {
-                        GIT_HUB_LOGIN = credentials('github-id')
+                GIT_HUB_LOGIN = credentials('github-id')
             }
 
             steps{
@@ -35,17 +36,22 @@ pipeline {
                 script {
                     def envs = readJSON file: "./env.json"
                     currentVersion = envs.app_version
+                    verssionIncrement = envs.version_increment
+                    currentVersion = currentVersion + verssionIncrement
                 }
-                echo "************** CURRENT VERSION ******************* ${currentVersion}"
+                echo "github Build version : ${currentVersion}"
             }
         }
 
         stage('Build') {
             steps {
-                echo "FOO ------------------------------------> ${currentVersion}"
-                echo 'hello world 11'
+                echo "Build version : ${currentVersion}"
+
+                echo '********************* current location files ******************'
+                sh 'ls'
+                
                 sh 'chmod +x gradlew'
-                echo 'hello world 22'
+                
                 // sh './gradlew publish -PfirstParam=100'
                 sh './gradlew assemble'
             }
@@ -57,15 +63,13 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
-                echo '********************* current location files ******************'
-                sh 'ls'
-                echo '******************** docker images *****************'
-                sh 'docker images'
-                echo '********************* start docker operations ******************'
 
+                echo '********************* start docker build operations ******************'
                 sh './gradlew docker -DfirstParam=100'
-
-
+                
+                echo '********************* docker images *****************************'
+                sh 'docker images'
+                
             }
         }
         stage('Push Docker image') {
