@@ -32,8 +32,8 @@ test {
 	useJUnitPlatform()
 }
 
-definee{
-	println '********************** defineeeeeeeee **********************'
+definee {
+	println "********************** defineeeeeeeee ********************** ${newVersion}"
 }
 
 // String dockerHubUsernameProperty = findProperty('ashan97') ?: 'tkgregory'
