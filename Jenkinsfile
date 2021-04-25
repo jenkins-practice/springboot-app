@@ -1,18 +1,22 @@
 def foo = "foo 1"
 
 pipeline {
-    agent any
 
-    parameters {
-        string(name: 'firstParam', defaultValue: '0.0.1-SNAPSHOT', description: '')
-        string(name: 'secondParam', defaultValue: 'BBB', description: '')
-        string(name: 'thirdParam', defaultValue: 'CCC', description: '')
-        }
+    environment { 
+        registry = "ashan97/spring-boot-api-example" 
+        registryCredential = 'dockerhub_id' 
+        dockerImage = '' 
+    }
+
+    agent any
 
     triggers {
         pollSCM '* * * * *'
     }
     stages {
+
+
+
         stage('Build') {
             steps {
                 echo "FOO ------------------------------------> ${foo}"
