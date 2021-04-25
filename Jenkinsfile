@@ -47,17 +47,33 @@ pipeline {
                 sh 'docker images'
                 echo '********************* start docker operations ******************'
 
-                sh './gradlew docker -DfirstParam=100'
+                // sh './gradlew docker -DfirstParam=100'
+
+                script { 
+
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+
+                }
+
             }
         }
         stage('Push Docker image') {
-            environment {
-                DOCKER_HUB_LOGIN = credentials('docker-hub')
-            }
-            steps {
-                sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
-                sh './gradlew dockerPush'
-            }
+            // environment {
+            //     DOCKER_HUB_LOGIN = credentials('docker-hub')
+            // }
+            // steps {
+            //     sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
+            //     sh './gradlew dockerPush'
+            // }
+               script { 
+
+                    docker.withRegistry( '', registryCredential ) { 
+
+                        dockerImage.push() 
+
+                    }
+
+                }
         }
     }
 }
