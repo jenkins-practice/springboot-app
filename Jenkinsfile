@@ -92,7 +92,12 @@ pipeline {
                 script{
                         envs['app_version'] = currentVersion
                         writeJSON file: './env.json', json: envs
+
+                        
                 }
+
+                echo 'git status : '
+                sh 'git status'
             }
         }
     }
