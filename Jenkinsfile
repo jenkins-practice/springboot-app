@@ -87,6 +87,14 @@ pipeline {
             }
 
         }
+        stage('Commit version to git') {
+            steps {
+                script{
+                        envs['app_version'] = currentVersion
+                        writeJSON file: './', json: envs
+                }
+            }
+        }
     }
 }
 
