@@ -88,13 +88,22 @@ pipeline {
 
         }
         stage('Commit version to git') {
+
+            environment {
+                GIT_HUB_LOGIN = credentials('github-id')
+            }
+
             steps {
                 script{
                         envs['app_version'] = currentVersion
                         writeJSON file: './env.json', json: envs
-
+                      
                         
                 }
+
+                sh "git config --global user.email ashanchandrasiri1@gmail.com"
+                sh "git config --global user.name $GIT_HUB_LOGIN_USR"
+
 
                 echo 'git status : '
                 sh 'git status'
