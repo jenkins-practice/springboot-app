@@ -98,6 +98,8 @@ pipeline {
 
                 echo 'git status : '
                 sh 'git status'
+                sh 'git stage env.js'
+                sh 'git commit -m "push changes of env.json"'
             }
         }
     }
