@@ -91,7 +91,7 @@ pipeline {
             steps {
                 script{
                         envs['app_version'] = currentVersion
-                        writeJSON file: './', json: envs
+                        writeJSON file: './env.json', json: envs
                 }
             }
         }
