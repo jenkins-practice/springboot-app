@@ -94,7 +94,10 @@ pipeline {
             }
 
             steps {
+
+                sh 'rm -f env.json'
                 script{
+                    
                         envs['app_version'] = currentVersion
                         writeJSON file: './env.json', json: envs
                       
