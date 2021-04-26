@@ -104,15 +104,15 @@ pipeline {
                         
                 }
 
-                sh "git config --global user.email ${env.github_resource_email}"
+                sh "git config --global user.email ashanchandrasiri1@gmail.com"
                 sh "git config --global user.name $GIT_HUB_LOGIN_USR"
 
 
                 echo 'git status : '
                 sh 'git status'
-                sh "git add ${env.github_springboot_env_file}"
+                sh 'git add env.json'
                 // sh 'git stage'
-                sh 'git commit -m "push changes of ${env.github_springboot_env_file}"'
+                sh 'git commit -m "push changes of env.json"'
                 sh 'git push'
             }
         }
