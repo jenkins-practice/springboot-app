@@ -110,7 +110,7 @@ pipeline {
 
                 echo 'git status : '
                 sh 'git status'
-                sh 'git add env.json'
+                sh "git add ${env.github_springboot_env_file}"
                 // sh 'git stage'
                 sh 'git commit -m "push changes of env.json"'
                 sh 'git push'
