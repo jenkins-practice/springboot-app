@@ -1,5 +1,6 @@
 def currentVersion = 0
 def verssionIncrement = 0
+def envs = ""
 
 pipeline {
 
@@ -34,7 +35,7 @@ pipeline {
                 sh 'ls'
 
                 script {
-                    def envs = readJSON file: "./env.json"
+                    envs = readJSON file: "./env.json"
                     currentVersion = envs.app_version
                     verssionIncrement = envs.version_increment
                     currentVersion = currentVersion + verssionIncrement
