@@ -35,7 +35,7 @@ pipeline {
                 sh 'ls'
 
                 script {
-                    envs = readJSON file: "./env.json"
+                    envs = readJSON file: "${env.github_springboot_env_file}"
                     currentVersion = envs.app_version
                     verssionIncrement = envs.version_increment
                     currentVersion = currentVersion + verssionIncrement
@@ -69,7 +69,7 @@ pipeline {
                 // sh "./gradlew docker -DversionParam=${currentVersion}"
 
                 
-                sh "docker build --build-arg JAR_FILE=build/libs/\\*.jar -t ashan97/spring-boot-api-example:latest -t ashan97/spring-boot-api-example:v${currentVersion} ."
+                sh "docker build --build-arg JAR_FILE=build/libs/\\*.jar -t ${env.dokcerhub_springboot_repository}/${env.dokcerhub_springboot_tagname}:latest -t ${env.dokcerhub_springboot_repository}/${env.dokcerhub_springboot_tagname}:v${currentVersion} ."
 
                 echo '********************* docker images *****************************'
                 sh 'docker images'
@@ -83,7 +83,7 @@ pipeline {
             steps {
                 sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
                 // sh './gradlew dockerPush'
-                sh "docker push ashan97/spring-boot-api-example:v${currentVersion}"
+                sh "docker push ${env.dokcerhub_springboot_repository}/${env.dokcerhub_springboot_tagname}:v${currentVersion}"
             }
 
         }
@@ -95,24 +95,24 @@ pipeline {
 
             steps {
 
-                sh 'rm -f env.json'
+                sh "rm -f ${env.github_springboot_env_file}"
                 script{
                     
                         envs['app_version'] = currentVersion
-                        writeJSON file: './env.json', json: envs
+                        writeJSON file: "${env.github_springboot_env_file}", json: envs
                       
                         
                 }
 
-                sh "git config --global user.email ashanchandrasiri1@gmail.com"
+                sh "git config --global user.email ${env.github_resource_email}"
                 sh "git config --global user.name $GIT_HUB_LOGIN_USR"
 
 
                 echo 'git status : '
                 sh 'git status'
-                sh 'git add env.json'
+                sh "git add ${env.github_springboot_env_file}"
                 // sh 'git stage'
-                sh 'git commit -m "push changes of env.json"'
+                sh 'git commit -m "push changes of ${env.github_springboot_env_file}"'
                 sh 'git push'
             }
         }
