@@ -104,7 +104,7 @@ pipeline {
                         
                 }
 
-                sh "git config --global user.email ashanchandrasiri1@gmail.com"
+                sh "git config --global user.email ${env.github_resource_email}"
                 sh "git config --global user.name $GIT_HUB_LOGIN_USR"
 
 
