@@ -113,6 +113,7 @@ pipeline {
                 sh 'git add env.json'
                 // sh 'git stage'
                 sh 'git commit -m "push changes of env.json"'
+                sh 'git push'
             }
         }
     }
