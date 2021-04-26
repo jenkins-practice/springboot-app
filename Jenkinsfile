@@ -29,7 +29,7 @@ pipeline {
                 sh 'rm -rf .git'
                 sh 'rm -f env.json'
                 sh 'git init'
-                sh "git remote add origin https://$GIT_HUB_LOGIN_USR:$GIT_HUB_LOGIN_PSW@github.com/jenkins-practice/resources.git"
+                sh "git remote add origin https://$GIT_HUB_LOGIN_USR:$GIT_HUB_LOGIN_PSW@${env.github_resource_url}"
                 sh 'git fetch'
                 sh 'git checkout master'
                 sh 'ls'
